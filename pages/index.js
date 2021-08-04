@@ -15,7 +15,7 @@ export default function Index() {
       <main className="flex flex-col items-center justify-center w-full flex-1 px-2 text-center">
         <div className="px-10 py-12 bg-white rounded-lg shadow-lg">
           <div className="text-center">
-            <h2 className="text-2xl tracking-tight leading-10 font-extrabold sm:leading-none sm:text-4xl">
+            <h2 className="text-2xl tracking-tight leading-10 font-extrabold md:leading-none md:text-3xl">
               {loading && (
                 <>
                   <svg
@@ -56,7 +56,7 @@ export default function Index() {
               )}
               {session && (
                 <>
-                  <div className="mb-4">Welcome back {session.user.name}!</div>
+                  <div className="mb-4 md:mb-8">Welcome back {session.user.name}!</div>
                   <div className="mb-4">
                     <Link href="/chat">
                       <a className="text-blue-500 mr-4 underline hover:italic">
@@ -64,7 +64,7 @@ export default function Index() {
                       </a>
                     </Link>
                     <img
-                      className="w-8 h-8 rounded-full inline-block animate-bounce sm:w-16 sm:h-16"
+                      className="w-8 h-8 rounded inline-block animate-bounce md:w-16 md:h-16"
                       src={session.user.image}
                     />
                   </div>
