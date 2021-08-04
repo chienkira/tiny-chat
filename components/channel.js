@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 export default function Channel({ channel }) {
   const [session] = useSession();
   const { quote } = useFamousQuote();
+  const [message, setMessage] = useState([]);
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null);
 
@@ -36,13 +37,18 @@ export default function Channel({ channel }) {
 
   const handleKeyUp = (e) => {
     const content = e.target.value;
-    if (!content || !content.trim()) {
-      return;
-    }
-    if (e.keyCode === 13 && !e.shiftKey) {
+    if (!content || !content.trim()) return;
+    if (e.keyCode === 13) {
       postMessage(channel, session.user, content);
-      e.target.value = "";
+      setMessage("");
     }
+  };
+
+  const handleSend = () => {
+    const content = message;
+    if (!content || !content.trim()) return;
+    postMessage(channel, session.user, message);
+    setMessage("");
   };
 
   const handleThumbsup = () => {
@@ -82,15 +88,36 @@ export default function Channel({ channel }) {
               type="text"
               className="w-full px-4"
               placeholder={`Message ${channel}`}
+              value={message}
               onKeyUp={handleKeyUp}
+              onChange={(e) => setMessage(e.target.value)}
             />
+            <button
+              className="text-3xl border-l-2 border-grey p-2 ml-1"
+              onClick={handleSend}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-12 text-blue-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+                />
+              </svg>
+            </button>
             <button
               className="text-3xl border-l-2 border-grey p-2 ml-1"
               onClick={handleThumbsup}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-6 w-6 text-pink-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

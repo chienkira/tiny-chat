@@ -6,7 +6,7 @@ export default function Sidebar({ channels }) {
 
   return (
     <>
-      <div className="flex-none w-48 pb-6 block md:w-64">
+      <div className="flex-none w-48 pb-6 md:w-64 hidden sm:block">
         <div className="mb-2 mt-3 px-4 flex justify-between">
           <div className="flex-auto">
             <Link href="/">
@@ -36,7 +36,11 @@ export default function Sidebar({ channels }) {
             <div className="opacity-75">Channels</div>
           </div>
           {channels.map((channel) => {
-            return <div key={channel} className="bg-teal-dark py-1 px-4"># {channel}</div>;
+            return (
+              <div key={channel} className="bg-teal-dark py-1 px-4">
+                # {channel}
+              </div>
+            );
           })}
         </div>
       </div>
