@@ -86,7 +86,7 @@ export default function Channel({ channel }) {
           <div className="flex rounded-lg border-2 border-grey overflow-hidden p-1">
             <input
               type="text"
-              className="w-full px-4"
+              className="w-full px-4 outline-none"
               placeholder={`Message # ${channel}`}
               value={message}
               onKeyUp={handleKeyUp}
