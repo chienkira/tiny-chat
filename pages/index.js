@@ -56,7 +56,9 @@ export default function Index() {
               )}
               {session && (
                 <>
-                  <div className="mb-4 md:mb-8">Welcome back {session.user.name}!</div>
+                  <div className="mb-4 md:mb-8">
+                    Welcome back {session.user.name}!
+                  </div>
                   <div className="mb-4">
                     <Link href="/chat">
                       <a className="text-blue-500 mr-4 underline hover:italic">

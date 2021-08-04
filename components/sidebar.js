@@ -36,7 +36,7 @@ export default function Sidebar({ channels }) {
             <div className="opacity-75">Channels</div>
           </div>
           {channels.map((channel) => {
-            return <div key={channel} className="bg-teal-dark py-1 px-4">{channel}</div>;
+            return <div key={channel} className="bg-teal-dark py-1 px-4"># {channel}</div>;
           })}
         </div>
       </div>

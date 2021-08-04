@@ -22,8 +22,8 @@ export async function getServerSideProps(context) {
 }
 
 export default function Chat({ session }) {
-  const [channels, setChannels] = useState(["#general"]);
-  const [activeChannel, setActiveChannel] = useState("#general");
+  const [channels, setChannels] = useState(["general"]);
+  const [activeChannel, setActiveChannel] = useState("general");
 
   return (
     <MainLayout title="Chat">
