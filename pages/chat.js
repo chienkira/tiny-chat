@@ -27,7 +27,7 @@ export default function Chat({ session }) {
 
   return (
     <MainLayout title="Chat">
-      <div className="font-sans antialiased h-screen flex">
+      <div className="font-sans antialiased h-full fixed inset-0 flex">
         <Sidebar channels={channels}></Sidebar>
         <Channel channel={activeChannel}></Channel>
       </div>
