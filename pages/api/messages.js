@@ -8,14 +8,14 @@ const pusher = new Pusher({
   useTLS: true,
 });
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   // Process a POST request
   if (req.method === "POST") {
     const { channel, user, content, timestamp = +new Date() } = req.body;
     const payload = { channel, user, content, timestamp };
 
     // tell pusher about new message
-    pusher.trigger(channel, "new-message", payload);
+    await pusher.trigger(channel, "new-message", payload);
 
     res.status(200).json(payload);
   }
