@@ -6,7 +6,7 @@ export default function Index() {
   const [session, loading] = useSession();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center h-full fixed inset-0 py-2">
       <Head>
         <title>Welcome to Tiny Chat App</title>
         <link rel="icon" href="/favicon.ico" />
