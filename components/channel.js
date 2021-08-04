@@ -10,13 +10,14 @@ export default function Channel({ channel }) {
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null);
 
+  const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_APP_KEY, {
+    cluster: process.env.NEXT_PUBLIC_PUSHER_APP_CLUSTER,
+    encrypted: true,
+  });
+
   useEffect(() => {
-    const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_APP_KEY, {
-      cluster: process.env.NEXT_PUBLIC_PUSHER_APP_CLUSTER,
-      encrypted: true,
-    });
     pusher.subscribe(channel).bind("new-message", (message) => {
-      console.info(`Pusher: new message!`);
+      console.info(`Pusher: new message! (${message.content})`);
       setMessages((messages) => [...messages, message]);
     });
     pusher.connection.bind("connected", () => {
