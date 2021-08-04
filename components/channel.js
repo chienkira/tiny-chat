@@ -74,7 +74,7 @@ export default function Channel({ channel }) {
           </div>
         </div>
         {/* Chat messages */}
-        <div className="px-6 py-4 flex-1 overflow-y-scroll">
+        <div className="px-6 py-4 flex-grow overflow-y-scroll">
           {messages &&
             messages.map((message, index) => {
               return <Message key={index} {...message}></Message>;
@@ -87,7 +87,7 @@ export default function Channel({ channel }) {
             <input
               type="text"
               className="w-full px-4"
-              placeholder={`Message ${channel}`}
+              placeholder={`Message # ${channel}`}
               value={message}
               onKeyUp={handleKeyUp}
               onChange={(e) => setMessage(e.target.value)}
